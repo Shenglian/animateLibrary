@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Swipe Card </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card_wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-height: 450px;
+    }
+
+    .card_list {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cards {
+      overflow: hidden;
+
+      position: absolute;
+      top: 50%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 0 35px;
+
+      width: 100%;
+      height: 100%;
+
+      max-width: 300px;
+      max-height: 390px;
+
+      transition: all, .5s;
+    }
+
+    .cards .img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      border-radius: 10px;
+    }
+
+    .card_dot {
+      display: flex;
+
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      height: 10px;
+      transform: translate3d(-50%, 0, 0);
+    }
+
+    .card_dot div {
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: #9B9B9B;
+    }
+
+    .card_dot div.active {
+      background-color: #FDAF05;
+    }
+
+    .card_dot div + div  {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card_wrapper">
+    <div class="card_list">
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1490481920145-fc78891bbb99?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=03e12dd0d45abebf33214447553b37f2&w=1000&q=80)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1495734300409-f6bfb3a6f88f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7bad8def37744ce431f0bc6e9956debe&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b66e9d835de3873a86d1cec996a1af06&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1517740586121-096aded91d1d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e23fa98441d1da641a7248e86f8e6932&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1514041790697-53f1f86214d2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b7ac79503fbe78855a346c8d814f95ba&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1490481920145-fc78891bbb99?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=03e12dd0d45abebf33214447553b37f2&w=1000&q=80)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1495734300409-f6bfb3a6f88f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7bad8def37744ce431f0bc6e9956debe&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b66e9d835de3873a86d1cec996a1af06&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1517740586121-096aded91d1d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e23fa98441d1da641a7248e86f8e6932&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+      <div class="cards">
+        <div class="img" style="background-image: url(https://images.unsplash.com/photo-1514041790697-53f1f86214d2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b7ac79503fbe78855a346c8d814f95ba&auto=format&fit=crop&w=500&q=60)"></div>
+      </div>
+    </div>
+    <div class="card_dot"></div>
+  </div>
+
+  <script type="text/javascript" src="/js/SwipeCard.js"></script>
+  <script>
+    const _SwipeCard = new SwipeCard({
+      cardList: document.body.querySelector('.card_wrapper .card_list'),
+      cards: document.body.querySelectorAll('.card_wrapper .card_list .cards'),
+      cardDot: document.body.querySelector('.card_wrapper .card_dot'),
+      bodyWidth: document.body.clientWidth,
+    })
+
+    _SwipeCard.init()
+  </script>
+</body>
+</html>

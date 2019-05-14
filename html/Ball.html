@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>popup person talk v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <style lang="css">
+      * {
+        box-sizing: content-box;
+      }
+  
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+  
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .ball {
+        margin: 10px auto; 
+        width: 50px;
+        height: 50px;
+        background-color: #ddd;
+        border-radius: 100%;
+      }
+      
+    </style>
+</head>
+
+<body>
+  <div class="ball_group">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+  </div>
+  <script>
+    ((w, d) => {
+      const balls = d.querySelectorAll('.ball');
+
+      let index = 0;
+
+      function moveBalls() {
+        let id = setInterval(function() {
+          if (index < 5) {
+            nextStep(balls, index)
+            index++
+          } else {
+            clearInterval(id)
+            
+            for (ball of balls) {
+              ball.style.removeProperty('transform')
+            }
+
+            index = 0
+
+            moveBalls()
+          }
+        }, 1000)
+      }
+
+      function nextStep(items, id) {
+        items[id].style.transform = 'translateX(-100%)'
+        items[id].style.transitionDuration = '500ms'
+      }
+
+      moveBalls()
+    })(window, document)
+  </script>
+</body>
+
+</html>

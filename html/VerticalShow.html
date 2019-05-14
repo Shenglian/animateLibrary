@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>popup person talk v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <style lang="css">
+    * {
+      box-sizing: content-box;
+    }
+    
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #aa_outline {
+      overflow: auto;
+      position: relative;
+      width: 320px;
+      height: 300px;
+    }
+    
+    #aa_group {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: all, .5s;
+    }
+    
+    #aa_group .aa_items {
+      display: flex;
+      transform: translateX(0);
+      transition: all 0ms ease;
+    }
+    
+    #aa_group .aa {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      width: 100%;
+      height: 60px;
+    }
+    
+    #aa_group .aa .user {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #ddd;
+      box-shadow: 0 1px 0 1px #ddd;
+    }
+    
+    #aa_group .aa .comment {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="aa_outline">
+    <div id="aa_group">
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/zhao.png')"></div>
+          <div class="comment">館長說得好</div>
+        </div>
+      </div>
+
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/wang.png')"></div>
+          <div class="comment">為了一些傷害性的字句改變心態？</div>
+        </div>
+      </div>
+
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/wang.png')"></div>
+          <div class="comment">為了一些傷害性的字句改變心態？</div>
+        </div>
+      </div>
+
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/lai.png')"></div>
+          <div class="comment">另一端不也是一個活生生的人嗎？</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/js/VerticalShow.js"></script>
+  <script>
+    const _VerticalShow = new VerticalShow({
+      inViewBox: document.body.querySelector('#aa_outline'),
+      boxs: document.body.querySelector('#aa_group')
+    })
+  </script>
+</body>
+
+</html>

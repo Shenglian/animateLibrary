@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>popup person talk v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <style lang="css">
+      * {
+        box-sizing: content-box;
+      }
+  
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+  
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      #aa_outline {
+        overflow: auto;
+        position: relative;
+        width: 320px;
+        height: 300px;
+      }
+  
+      #aa_group {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: all, .5s;
+      }
+  
+      #aa_group .aa_items {
+        display: flex;
+        transform: translateX(-100%);
+        transition: all 0ms ease;
+      }
+  
+      #aa_group .aa {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+        width: 100%;
+        height: 60px;  
+      }
+  
+      #aa_group .aa .user {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 0 1px #ddd;
+      }
+  
+      #aa_group .aa .comment {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        height: 100%;
+        font-size: 14px;
+        color: #333;
+      }
+  
+      
+    </style>
+</head>
+
+<body>
+  <div id="aa_outline">
+    <div id="aa_group">
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/zhao.png')"></div>
+          <div class="comment">館長說得好</div>
+        </div>
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/xxxxcat.png')"></div>
+          <div class="comment">網路 就是匿名性</div>
+        </div>
+      </div>
+
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/xxxxcat.png')"></div>
+          <div class="comment">網路 就是匿名性</div>
+        </div>
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/wang.png')"></div>
+          <div class="comment">為了一些傷害性的字句改變心態？</div>
+        </div>
+      </div>
+
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/wang.png')"></div>
+          <div class="comment">為了一些傷害性的字句改變心態？</div>
+        </div>
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/lai.png')"></div>
+          <div class="comment">另一端不也是一個活生生的人嗎？</div>
+        </div>
+      </div>
+
+      <div class="aa_items">
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/lai.png')"></div>
+          <div class="comment">另一端不也是一個活生生的人嗎？</div>
+        </div>
+        <div class="aa">
+          <div class="user" style="background-image: url('https://ck101.com/crazyinternet/imgs/240/zhao.png')"></div>
+          <div class="comment">館長說得好</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    ((w, d) => {
+      const aa_group = d.querySelector('#aa_group');
+      const aa_items = d.querySelectorAll('.aa_items');
+      const aa = d.querySelectorAll('.aa');
+
+      let index1 = aa_items[0].children.length + 1;
+      let index2 = aa_items[0].children.length + 1;
+      let index3 = aa_items[0].children.length + 1;
+      let index4 = aa_items[0].children.length + 1;
+
+      aa_items[0].addEventListener('transitionend', function(){
+        if (index1 === 0) {
+          index1 = 2
+          move(2, aa_items[0], true)
+        }
+
+        index2--
+        move(index2, aa_items[1], false)
+      })
+
+      aa_items[1].addEventListener('transitionend', function(){
+        if (index2 === 0) {
+          index2 = 2
+          move(2, aa_items[1], true)
+        }
+
+        index3--
+        move(index3, aa_items[2], false)
+      })
+
+      aa_items[2].addEventListener('transitionend', function(){
+        if (index3 === 0) {
+          index3 = 2
+          move(2, aa_items[2], true)
+        }
+
+        index4--
+        move(index4, aa_items[3], false)
+      })
+
+      aa_items[3].addEventListener('transitionend', function(){
+        if (index4 === 0) {
+          index4 = 2
+          move(2, aa_items[3], true)
+        }
+
+        index1--
+        move(index1, aa_items[0], false)
+      })    
+
+      function cloneFirstChild(items) {
+        for (item of items) {
+          var _firstChild = item.children[0];
+          var _lastItemClone = item.lastElementChild.cloneNode(true);
+
+          item.insertBefore(_lastItemClone,  _firstChild.previousSibling);
+        }
+      }
+
+      cloneFirstChild(aa_items)
+
+      function setParentWidth(items) {
+        for (item of items) {
+          item.style.width = `${item.children.length * item.clientWidth}px`
+        }
+      }
+
+      setParentWidth(aa_items)
+
+      function move(index, item, lastOne) {
+        item.style.transform = `translate3d(-${320 * index}px, 0px, 0px)`
+        item.style.transitionDuration = lastOne ? '0ms' : '1200ms'
+      }
+
+      index1--
+      move(index1, aa_items[0], false)
+
+      function Delay(ms) {
+        return new Promise(res => setTimeout(res, ms))
+      }
+
+      function showMe(index) {
+        if (index > 3) return
+
+        let ms = 0;
+
+        index === 0 ?
+          ms = 0 :
+          ms = 1500
+
+        Delay(ms)
+          .then(res => {
+            // aa[index].classList.add('end_a')
+          })
+          .then(res => {
+            console.log({index})
+            showMe(index + 1)
+          })
+      }
+
+      // showMe(0)      
+    })(window, document)
+  </script>
+</body>
+
+</html>

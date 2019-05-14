@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>PageSlider Demo</title>
+<style>
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0 ;
+  padding:0 ;
+  overflow:hidden;
+  
+}
+
+body {
+  position: relative;
+  background-color: #000;
+}
+
+#swipe_wrapper {
+  width: 100%;
+  height: 100%; 
+
+}
+
+#swipe_wrapper > #swipe_slider {
+  position: relative;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flex;
+  display: -o-inline-flex;
+  display: inline-flex;
+  height: 100%; 
+
+  
+}
+
+#swipe_wrapper > #swipe_slider.animate {
+  transition: transform .3s ease;
+  -webkit-transition: -webkit-transform .3s ease;
+  -moz-transition: -moz-transform .3s ease; 
+}
+
+#swipe_wrapper > #swipe_slider > .swipe {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  
+  width: 100%;
+  height: 100%;
+}
+
+#swipe_wrapper > #swipe_slider > .swipe > img {
+  margin: auto;
+}
+
+#swipe_wrapper > #swipe_dot_section {
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flex;
+  display: -o-inline-flex;
+  display: inline-flex;
+
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+#swipe_wrapper > #swipe_dot_section > .swipe_dot {
+  margin: 0 5px;
+  width: 7px;
+  height: 7px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+#swipe_wrapper > #swipe_dot_section > .swipe_dot.active {
+  background-color: red;
+}
+
+</style>
+</head>
+
+<body>
+  <div id="swipe_wrapper">
+    <div id="swipe_slider">
+      <div id="1" class="swipe"><img class="swipe_img" src="https://images.unsplash.com/photo-1494005199821-2cb74a8e75fb?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt=""></div>
+      <div id="2" class="swipe"><img class="swipe_img" src="https://images.unsplash.com/photo-1495206255513-257bdf652e26?auto=format&fit=crop&w=2090&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt=""></div>
+      <div id="3" class="swipe"><img class="swipe_img" src="https://images.unsplash.com/photo-1507706132643-4b3dabbca8b3?auto=format&fit=crop&w=2134&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt=""></div>
+    </div>
+    <div id="swipe_dot_section"></div>
+    <div id="swipe_arrow_section">
+      <div class="swipe_arrow_prev"></div>
+      <div class="swipe_arrow_next"></div>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="/js/SwipeMobile.js"></script>
+<script>
+  const swipe = new Swipe(document.querySelector('#swipe_slider'), {
+    image: '.swipe_img',
+    infinite: true,
+    dot: true
+  })
+</script>
+</html>
