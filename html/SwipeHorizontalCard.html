@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Swipe Card </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card_wrapper {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 200px;
+    }
+
+    .card_list {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 150px;
+      transform: translate(-50%, -50%);
+    }
+
+    .cards {
+      overflow: hidden;
+
+      position: absolute;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 270px;
+      height: 150px;
+
+      border-radius: 10px;
+      box-shadow: 3px -3px 8px 0 rgba(0, 0, 0, .3);
+    }
+
+    .cards.innity-apps-card-1 {
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .cards.innity-apps-card-2 {
+      top: -10px;
+      left: 8px;
+      z-index: 900;
+    }
+
+    .cards.innity-apps-card-3 {
+      top: -20px;
+      left: 16px;
+      z-index: 800;
+    }
+
+    .cards.innity-apps-card-transition {
+      transition: 
+        left 0.3s ease, 
+        top 0.3s ease, 
+        width 0.3s ease, 
+        transform 0.3s ease;
+    }
+
+    .cards.finger-apps-card {
+      transform: scale(.95) rotate(5deg);
+      transition: transform .2s;
+      -webkit-transition: transform .2s;
+    }
+
+    .cards .img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+    }
+
+    .card_list.active .cards:nth-child(1) {
+      animation: myAnimation1 1.2s ease 0s;
+    }
+
+    .card_list.active .cards:nth-child(2) {
+      animation: myAnimation2 1.4s ease 0s;
+    }
+
+    .card_list.active .cards:nth-child(3) {
+      animation: myAnimation3 1.6s ease 0s;
+    }
+
+    @keyframes myAnimation1 {
+        0% { transform: translateY(150%); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes myAnimation2 {
+        0% { transform: translateY(150%); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes myAnimation3 {
+        0% { transform: translateY(150%); }
+      100% { transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card_wrapper"></div>
+
+  <script type="text/javascript" src="/js/SwipeHorizontalCard.js"></script>
+  <script>
+    const _SwipeCard = new SwipeCard({
+      insertDom: document.body.querySelector('.card_wrapper'), 
+      imgs: [
+        {
+          imgUrl: 'https://images.unsplash.com/photo-1490481920145-fc78891bbb99?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=03e12dd0d45abebf33214447553b37f2&w=1000&q=80',
+          link: 'https://www.google.com'
+        },
+        {
+          imgUrl: 'https://images.unsplash.com/photo-1495734300409-f6bfb3a6f88f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7bad8def37744ce431f0bc6e9956debe&auto=format&fit=crop&w=500&q=60',
+          link: 'https://www.google.com',
+        },
+        {
+          imgUrl: 'https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b66e9d835de3873a86d1cec996a1af06&auto=format&fit=crop&w=500&q=60',
+          link: 'https://www.google.com',
+        },
+      ]
+    })
+  </script>
+</body>
+</html>
