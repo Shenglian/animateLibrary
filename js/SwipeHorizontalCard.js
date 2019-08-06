@@ -36,8 +36,6 @@
 
       this.fingerMove = null;
 
-      this.durationTime = 0;
-
       this.init()
     }
 
@@ -65,8 +63,8 @@
       this.imgs.forEach(url => {
         let p = 
           loadImage(url)
-          .then(img => this.images.push(img))
-          .catch(err => console.log(err))
+          .then(res => {})
+          .catch(error => {})
 
         pr.push(p);
       })
@@ -97,8 +95,6 @@
     }
 
     touchstart(e) {
-      if (e.target.classList.contains('btn')) return
-
       let touches = e.touches[0];
 
       this.pageX = touches.pageX;
@@ -111,8 +107,6 @@
     };
 
     touchmove(e) {
-      if (e.target.classList.contains('btn')) return
-
       const touches = e.touches[0];
 
       // END - START
@@ -125,19 +119,14 @@
     }
 
     touchend(e) {
-      if (
-        e.target.classList.contains('btn') ||
-        this.fingerMove === null
-      ) return
+      if (this.fingerMove === null) return
 
       const minRange = 50;
-
-      const duration = +new Date - this.durationTime;
-      // Number(duration) > 150 && 
+ 
       if (Math.abs(this.cards[0].clientWidth / 4) > Math.abs(this.fingerMove)) {
         this.setStyle(
           this.cards[this.currentIndex],
-          this.gap
+          0
         )
 
         this.cards[this.currentIndex].classList.remove('finger-apps-card')
@@ -165,10 +154,8 @@
 
       this.setStyle(
         this.cards[this.currentIndex],
-        this.gap
+        0
       )
-
-      this.fingerMove = null;
       
       this.renewClasses()
     }
