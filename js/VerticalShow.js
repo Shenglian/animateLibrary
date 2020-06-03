@@ -47,7 +47,7 @@
 
 		goAnimate(now) {
 			this.timeID = requestAnimationFrame(() => {
-				if (!this.last || now - this.last >= 1 * 1000) {
+				if (!this.last || now - this.last >= this.second) {
 					this.last = now
 
 					this.index === 0 
